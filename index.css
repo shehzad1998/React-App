@@ -1,0 +1,66 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    border: solid black;
+    height: 100px;
+}
+
+.nav-items{
+    height: 100px;
+   
+}
+
+.nav-items > ul {
+    display: flex;
+    list-style-type: none;
+
+}
+
+
+.logo-container{
+    height: 100px;
+}
+
+.logo{
+    height: 85px;
+    margin: 10px;
+}
+
+
+.nav-items > ul > li{
+    padding: 10px;
+    margin: 10px;
+    font-size: 30px;
+
+}
+.res-card{
+    width: 200px;
+    border: 1px solid black;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(232, 228, 228);
+    
+}
+
+.res-container{
+    display: flex;
+}
+
+
+.img-container > img{
+    height: 150px;
+    width: 200px;
+
+}
+.filter-btn{
+    margin: 10px;
+    cursor: pointer;
+}
+.filter-containerter{
+    display: flex;
+}
+
+.search{
+    margin: 10px;
+}
+
