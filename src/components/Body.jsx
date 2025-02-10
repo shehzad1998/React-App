@@ -1,50 +1,82 @@
 import React, { useState, useEffect } from "react";
 import ResturantCard from "./ResturantCard";
-import MENU_DATA from "../utils/Api";
 
 const Body = () => {
-    const [resdata, setResdata] = useState([...MENU_DATA]); 
+    const [resdata, setResdata] = useState([]); 
+    const [filteredData, setFilteredData] = useState([]);
     const [searchText, setSearchText] = useState("");
 
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(
+                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.3287285&lng=73.17773749999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            );
+            const json = await response.json();
+    
+            console.log("API Response:", json); // ✅ Check full response in console
+    
+            const restaurantCards = json?.data?.cards || [];
+            let restaurants = [];
+    
+            restaurantCards.forEach((card) => {
+                const foundRestaurants = card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+                if (foundRestaurants) {
+                    restaurants.push(...foundRestaurants.map(rest => rest.info));
+                }
+            });    
+            setResdata(restaurants);
+            setFilteredData(restaurants);
+        } catch (error) {
+            console.error("❌ Error fetching data:", error);
+        }
+    };
+    
+    
+    
+    
+
     const filterTopRated = () => {
-        const filteredData = MENU_DATA.filter((res) => 
-            parseFloat(res.info.rating?.rating_text || "0") > 4
-        );
-        setResdata([...filteredData]); 
+        const topRated = resdata.filter(res => parseFloat(res.avgRating || "0") > 4);
+        setFilteredData(topRated);
     };
 
+    const handleSearch = () => {
+        const searchResults = resdata.filter(res =>
+            res.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setFilteredData(searchResults);
+    };
 
     return (
         <div className="body">
-            <div className="filter-containerter">
+            <div className="filter-container">
                 <div className="filter">
                     <button className="filter-btn" onClick={filterTopRated}>
                         Top Rated Restaurants
                     </button>
                 </div>
                 <div className="search">
-                    <input type="text" className="search-box" value={searchText} onChange={(e)=>{
-                        setSearchText(e.target.value)
-                    }}/>
-                    <button onClick={() => {
-                        const filteredRestaurants = MENU_DATA.filter((res) => 
-                            res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                        );
-                        setResdata(filteredRestaurants);
-                    }}>
-                        Search
-                    </button>
-
+                    <input 
+                        type="text" 
+                        className="search-box" 
+                        value={searchText} 
+                        onChange={(e) => setSearchText(e.target.value)}
+                    />
+                    <button onClick={handleSearch}>Search</button>
                 </div>
             </div>    
 
             <div className="res-container">
-                {resdata.length > 0 ? (
-                    resdata.map((Resturant) => (
-                        <ResturantCard key={Resturant.info.resId} resdata={Resturant} />
+                {filteredData.length > 0 ? (
+                    filteredData.map((restaurant, index) => (
+                        <ResturantCard key={`${restaurant.id}-${index}`} resdata={restaurant} />
                     ))
                 ) : (
-                    <p>No top-rated restaurants found.</p>
+                    <p>No restaurants found.</p>
                 )}
             </div>
         </div>

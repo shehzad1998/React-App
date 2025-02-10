@@ -1,24 +1,31 @@
 import React from "react";
 
-const ResturantCard = (props) => {
-    const {resdata} = props;
+const ResturantCard = ({ resdata }) => {
+    if (!resdata) return null;
 
-    const {resId,name,Image,o2FeaturedImage, rating,cuisine,costText} = resdata?.info || {};
+    const {
+        id,
+        name,
+        cloudinaryImageId,
+        avgRating,
+        cuisines,
+        costForTwo,
+    } = resdata;
 
-    const imageUrl = Image?.url || o2FeaturedImage?.url || "https://via.placeholder.com/150"; // Fallback image
+    const imageUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${resdata.cloudinaryImageId}`;
+  
 
-    return(
-       <div className="res-card">
+    return (
+        <div className="res-card">
             <div className="img-container">
-                <img src={imageUrl} alt="Resturant Image" />
+                <img src={imageUrl} alt={name} />
             </div>
-           <h3>{name}</h3>
-           <h4>Rating :{rating?.rating_text} Stars</h4>
-           <h4>Cuisine :{cuisine[0]?.name}</h4>
-           <h4>{costText?.text}</h4>
-       </div>
-    );   
-   };
+            <h3>{name}</h3>
+            <h4>Rating: {avgRating} ⭐</h4>
+            <h4>Cuisines: {cuisines?.join(", ")}</h4>
+            <h4>{costForTwo}</h4>
+        </div>
+    );
+};
 
-   export default ResturantCard;
-
+export default ResturantCard;
