@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ResturantCard from "./ResturantCard";
-
+import Shimmer from "./Shimmer";
 const Body = () => {
     const [resdata, setResdata] = useState([]); 
     const [filteredData, setFilteredData] = useState([]);
     const [searchText, setSearchText] = useState("");
+    const [loading, setLoading] = useState(true); // Add loading state
 
     useEffect(() => {
         fetchData();
@@ -17,8 +18,6 @@ const Body = () => {
             );
             const json = await response.json();
     
-            console.log("API Response:", json); // ✅ Check full response in console
-    
             const restaurantCards = json?.data?.cards || [];
             let restaurants = [];
     
@@ -27,17 +26,16 @@ const Body = () => {
                 if (foundRestaurants) {
                     restaurants.push(...foundRestaurants.map(rest => rest.info));
                 }
-            });    
+            });
+
             setResdata(restaurants);
             setFilteredData(restaurants);
+            setLoading(false); // Stop loading once data is fetched
         } catch (error) {
             console.error("❌ Error fetching data:", error);
+            setLoading(false);
         }
     };
-    
-    
-    
-    
 
     const filterTopRated = () => {
         const topRated = resdata.filter(res => parseFloat(res.avgRating || "0") > 4);
@@ -71,7 +69,9 @@ const Body = () => {
             </div>    
 
             <div className="res-container">
-                {filteredData.length > 0 ? (
+                {loading ? (
+                    <Shimmer />
+                ) : filteredData.length > 0 ? (
                     filteredData.map((restaurant, index) => (
                         <ResturantCard key={`${restaurant.id}-${index}`} resdata={restaurant} />
                     ))
