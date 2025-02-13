@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import { RES_API } from "../utils/constants";
+
 const Body = () => {
     const [resdata, setResdata] = useState([]); 
     const [filteredData, setFilteredData] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const [loading, setLoading] = useState(true); // Add loading state
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         fetchData();
@@ -13,9 +16,7 @@ const Body = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(
-                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.3287285&lng=73.17773749999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-            );
+            const response = await fetch(RES_API);
             const json = await response.json();
     
             const restaurantCards = json?.data?.cards || [];
@@ -30,7 +31,7 @@ const Body = () => {
 
             setResdata(restaurants);
             setFilteredData(restaurants);
-            setLoading(false); // Stop loading once data is fetched
+            setLoading(false); 
         } catch (error) {
             console.error("❌ Error fetching data:", error);
             setLoading(false);
@@ -73,7 +74,14 @@ const Body = () => {
                     <Shimmer />
                 ) : filteredData.length > 0 ? (
                     filteredData.map((restaurant, index) => (
-                        <ResturantCard key={`${restaurant.id}-${index}`} resdata={restaurant} />
+                        <Link 
+                        key={`${restaurant.id}-${index}`} 
+                        to={`/Resturant/${restaurant.id}`} 
+                        className="res-card-link"
+                    > 
+                        <ResturantCard resdata={restaurant} />
+                    </Link>
+                    
                     ))
                 ) : (
                     <p>No restaurants found.</p>
