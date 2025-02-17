@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withPromotedLable } from "./ResturantCard";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantCard from "../utils/useRestaurantCard";
 
@@ -9,6 +9,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const { resdata, filteredData, setFilteredData, loading } =
     useRestaurantCard();
+  const RestaurantWithPrmotion = withPromotedLable(ResturantCard);
+  console.log(resdata);
 
   const filterTopRated = () => {
     const topRated = resdata.filter(
@@ -55,7 +57,11 @@ const Body = () => {
               key={`${restaurant.id}-${index}`}
               to={`/Resturant/${restaurant.id}`}
               className="res-card-link">
-              <ResturantCard resdata={restaurant} />
+              {restaurant.promoted ? (
+                <RestaurantWithPrmotion resdata={restaurant} />
+              ) : (
+                <ResturantCard resdata={restaurant} />
+              )}
             </Link>
           ))
         ) : (

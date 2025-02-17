@@ -1,185 +1,242 @@
-.Header{
-    display: flex;
-    justify-content: space-between;
-    border: solid black;
-    height: 100px;
+.Header {
+  display: flex;
+  justify-content: space-between;
+  border: solid black;
+  height: 100px;
 }
 
-.nav-items{
-    height: 100px;
-   
+.nav-items {
+  height: 100px;
 }
 
 .nav-items > ul {
-    display: flex;
-    list-style-type: none;
-
+  display: flex;
+  list-style-type: none;
 }
 
-
-.logo-container{
-    height: 100px;
+.logo-container {
+  height: 100px;
 }
 
-.logo{
-    height: 85px;
-    margin: 10px;
+.logo {
+  height: 85px;
+  margin: 10px;
 }
 
-
-.nav-items > ul > li{
-    padding: 10px;
-    margin: 10px;
-    font-size: 30px;
-
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+  font-size: 30px;
 }
-.res-card{
-    width: 200px;
-    border: 1px solid black;
-    margin: 20px;
-    padding: 20px;
-    background-color: rgb(232, 228, 228);
-    cursor: pointer;
-    
+.res-card {
+  width: 200px;
+  border: 1px solid black;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgb(232, 228, 228);
+  cursor: pointer;
 }
 .res-card-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 .res-card * {
-    pointer-events: auto; /* Ensure child elements allow clicks */
+  pointer-events: auto; /* Ensure child elements allow clicks */
 }
 
-
-.res-container{
-    display: flex;
-    flex-wrap: wrap;
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .Resturant-Menu {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .Resturant-Menu h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .Resturant-Menu p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 15px;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 .Resturant-Menu h2 {
-    font-size: 20px;
-    color: #222;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #f4a261;
-    display: inline-block;
-    padding-bottom: 5px;
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #f4a261;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 .Resturant-Menu ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .Resturant-Menu ul li {
-    font-size: 16px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    color: #444;
+  font-size: 16px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #444;
 }
 
 .Resturant-Menu ul li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .Resturant-Menu ul li:hover {
-    background-color: #f4a261;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+  background-color: #f4a261;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
 }
 
-
-.img-container > img{
-    height: 150px;
-    width: 200px;
-
+.img-container > img {
+  height: 150px;
+  width: 200px;
 }
-.filter-btn{
-    margin: 10px;
-    cursor: pointer;
+.filter-btn {
+  margin: 10px;
+  cursor: pointer;
 }
-.filter-containerter{
-    display: flex;
+.filter-containerter {
+  display: flex;
 }
 
-.search{
-    margin: 10px;
+.search {
+  margin: 10px;
 }
 
 .shimmer-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .shimmer-card {
-    width: 250px;
-    height: 300px;
-    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-    background-size: 400% 100%;
-    animation: shimmerAnimation 1.5s infinite linear;
-    border-radius: 10px;
+  width: 250px;
+  height: 300px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 400% 100%;
+  animation: shimmerAnimation 1.5s infinite linear;
+  border-radius: 10px;
 }
 
 .Error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f8d7da;
-    color: #721c24;
-    text-align: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8d7da;
+  color: #721c24;
+  text-align: center;
+  padding: 20px;
 }
 
 .Error h1 {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .Error h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .Error h2:last-child {
-    font-size: 20px;
-    font-weight: normal;
-    color: #b71c1c;
+  font-size: 20px;
+  font-weight: normal;
+  color: #b71c1c;
 }
 
+.category-container {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.category-header {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-content {
+  padding: 10px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-price {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.item-desc {
+  color: #666;
+  font-size: 14px;
+}
+
+.item-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.food-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.add-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 @keyframes shimmerAnimation {
-    0% {
-        background-position: -200px 0;
-    }
-    100% {
-        background-position: 200px 0;
-    }
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
 }
