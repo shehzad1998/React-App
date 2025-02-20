@@ -97,12 +97,12 @@
   border-bottom: none;
 }
 
-.Resturant-Menu ul li:hover {
+/* .Resturant-Menu ul li:hover {
   background-color: #f4a261;
   color: white;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-}
+} */
 
 .img-container > img {
   height: 150px;
@@ -222,14 +222,84 @@
   margin-bottom: 5px;
 }
 
-.add-btn {
-  background: #4caf50;
+.ClearCart-btn {
+  background-color: #4caf50; /* Green */
   color: white;
-  border: none;
-  padding: 5px 10px;
+  font-size: 16px;
   font-weight: bold;
+  padding: 8px 12px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.cart-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.cart-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.cart-empty {
+  text-align: center;
+  color: #888;
+}
+
+/* Add Button */
+.add-btn {
+  background-color: #4caf50; /* Green */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+}
+
+/* Increase & Decrease Buttons */
+.increase-btn,
+.decrease-btn {
+  background-color: #45a049; /* Orange */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.increase-btn:hover,
+.decrease-btn:hover {
+  background-color: #45a049;
+}
+
+/* Item Quantity */
+.item-qty {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 10px;
+  color: #333;
+  min-width: 30px;
+  text-align: center;
 }
 
 @keyframes shimmerAnimation {

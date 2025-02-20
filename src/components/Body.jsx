@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ResturantCard, { withPromotedLable } from "./ResturantCard";
 import Shimmer from "./Shimmer";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantCard from "../utils/useRestaurantCard";
 
@@ -9,8 +9,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const { resdata, filteredData, setFilteredData, loading } =
     useRestaurantCard();
-  const RestaurantWithPrmotion = withPromotedLable(ResturantCard);
-  console.log(resdata);
+  const RestaurantWithPromotion = withPromotedLable(ResturantCard);
 
   const filterTopRated = () => {
     const topRated = resdata.filter(
@@ -27,8 +26,9 @@ const Body = () => {
   };
 
   const onlineStatus = useOnlineStatus();
-  if (onlineStatus === false)
+  if (!onlineStatus)
     return <h1>Opps! Your Internet Connection is not working!</h1>;
+
   return (
     <div className="body">
       <div className="filter-container">
@@ -58,7 +58,7 @@ const Body = () => {
               to={`/Resturant/${restaurant.id}`}
               className="res-card-link">
               {restaurant.promoted ? (
-                <RestaurantWithPrmotion resdata={restaurant} />
+                <RestaurantWithPromotion resdata={restaurant} />
               ) : (
                 <ResturantCard resdata={restaurant} />
               )}

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.items);
   return (
     <div className="Header">
       <div className="logo-container">
@@ -25,7 +28,9 @@ const Header = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>Cart</li>
+          <li>
+            <Link to="/cart">Cart- {cartItems.length}</Link>
+          </li>
           <li>Login</li>
         </ul>
       </div>
